@@ -9,7 +9,7 @@ let package = Package(
     .library(name: "IMGLYPluginAIImageGeneration", targets: ["IMGLYPluginAIImageGeneration"]),
   ],
   dependencies: [
-    .package(url: "https://github.com/imgly/IMGLYUI-swift.git", exact: "1.77.0"),
+    .package(url: "https://github.com/imgly/IMGLYUI-swift.git", exact: "1.78.0-rc.0"),
   ],
   targets: [
     .target(
