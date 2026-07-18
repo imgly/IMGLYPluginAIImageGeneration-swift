@@ -8,7 +8,9 @@ public struct ImageSize: Sendable {
   public let height: Int
 
   /// Convenience accessor returning `(width, height)`.
-  public var dimensions: (width: Int, height: Int) { (width, height) }
+  public var dimensions: (width: Int, height: Int) {
+    (width, height)
+  }
 
   /// Creates an image size with the given pixel dimensions.
   public init(width: Int, height: Int) {

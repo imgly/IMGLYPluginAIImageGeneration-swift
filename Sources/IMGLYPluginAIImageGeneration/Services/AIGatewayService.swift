@@ -213,7 +213,9 @@ public final class AIGatewayService: AIImageService {
     for try await line in bytes.lines {
       try Task.checkCancellation()
       let trimmed = line.trimmingCharacters(in: .whitespaces)
-      if trimmed.isEmpty || trimmed.hasPrefix(":") { continue }
+      if trimmed.isEmpty || trimmed.hasPrefix(":") {
+        continue
+      }
 
       if trimmed.hasPrefix("event:") {
         currentEvent = String(trimmed.dropFirst("event:".count))
@@ -335,7 +337,9 @@ public final class AIGatewayService: AIImageService {
     let pixelWidth = image.size.width * image.scale
     let pixelHeight = image.size.height * image.scale
     let scale = min(maxDimension / pixelWidth, maxDimension / pixelHeight, 1.0)
-    if scale >= 1.0 { return image }
+    if scale >= 1.0 {
+      return image
+    }
 
     let newSize = CGSize(width: pixelWidth * scale, height: pixelHeight * scale)
     let format = UIGraphicsImageRendererFormat()
@@ -353,7 +357,9 @@ public final class AIGatewayService: AIImageService {
     do {
       for try await byte in bytes {
         data.append(byte)
-        if data.count >= cap { break }
+        if data.count >= cap {
+          break
+        }
       }
     } catch {}
     return String(data: data, encoding: .utf8) ?? ""

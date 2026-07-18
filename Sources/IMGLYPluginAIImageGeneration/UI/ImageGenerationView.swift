@@ -70,7 +70,6 @@ struct ImageGenerationView: View {
 
   // MARK: - Private Views
 
-  @ViewBuilder
   private var generateButton: some View {
     Button(action: generate) {
       Label {

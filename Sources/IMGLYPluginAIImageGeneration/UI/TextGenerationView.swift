@@ -121,7 +121,6 @@ struct TextGenerationView: View {
 
   // MARK: - Prompt Input
 
-  @ViewBuilder
   private var promptInputSection: some View {
     VStack(alignment: .leading, spacing: 8) {
       VStack(alignment: .leading, spacing: 0) {
@@ -203,7 +202,6 @@ struct TextGenerationView: View {
 
   // MARK: - Controls Row
 
-  @ViewBuilder
   private var controlsRow: some View {
     ScrollView(.horizontal, showsIndicators: false) {
       HStack(alignment: .bottom, spacing: 12) {
@@ -283,7 +281,6 @@ struct TextGenerationView: View {
     }
   }
 
-  @ViewBuilder
   private var formatMenu: some View {
     Menu {
       ForEach(configuration.availableFormats, id: \.self) { format in

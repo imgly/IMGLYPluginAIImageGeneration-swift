@@ -43,7 +43,7 @@ public final class AIImageGenerationPlugin: EditorConfiguration {
     /// Defaults to prepending the button.
     public let inspectorBarModifier: @MainActor @Sendable (
       _ items: InspectorBar.Modifier,
-      _ button: any InspectorBar.Item
+      _ button: any InspectorBar.Item,
     ) -> Void
 
     /// Creates plugin options.
@@ -63,7 +63,7 @@ public final class AIImageGenerationPlugin: EditorConfiguration {
         },
       inspectorBarModifier: @escaping @MainActor @Sendable (
         _ items: InspectorBar.Modifier,
-        _ button: any InspectorBar.Item
+        _ button: any InspectorBar.Item,
       ) -> Void = { items, button in
         items.addFirst { button }
       },

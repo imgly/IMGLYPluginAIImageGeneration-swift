@@ -24,7 +24,7 @@ public struct ImageMetadata: Sendable {
   /// Creates image metadata.
   public init(
     generationTime: TimeInterval,
-    serviceUsed: String
+    serviceUsed: String,
   ) {
     self.generationTime = generationTime
     self.serviceUsed = serviceUsed
