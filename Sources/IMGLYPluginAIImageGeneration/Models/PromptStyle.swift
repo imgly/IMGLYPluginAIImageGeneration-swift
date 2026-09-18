@@ -38,6 +38,9 @@ public struct PromptStyle: Identifiable, Hashable, Sendable, Codable {
 // MARK: - Curated style list
 
 public extension PromptStyle {
+  /// Identifier of the built-in "no style" option, which applies no prompt styling.
+  static let noneID = "none"
+
   /// The curated style set the plugin ships with.
   ///
   /// To customize, pass your own `[PromptStyle]` array via the plugin's
@@ -48,7 +51,7 @@ public extension PromptStyle {
       base?.appendingPathComponent("\(name).jpeg")
     }
     return [
-      .init(id: "none", displayName: "None", promptSnippet: ""),
+      .init(id: noneID, displayName: "None", promptSnippet: ""),
       .init(
         id: "anime-celshaded", displayName: "Anime",
         promptSnippet: "anime cel\u{2011}shaded, bright pastel palette, expressive eyes, clean line art",
