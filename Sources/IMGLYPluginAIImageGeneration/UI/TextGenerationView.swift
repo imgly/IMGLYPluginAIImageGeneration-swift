@@ -234,13 +234,7 @@ struct TextGenerationView: View {
         HStack(spacing: 8) {
           styleThumbnailView
             .frame(width: 32, height: 36)
-            .background(.black)
             .clipShape(StyleThumbnailShape())
-            .overlay(
-              StyleThumbnailShape()
-                .inset(by: 0.25)
-                .stroke(Color(.separator), lineWidth: 0.5),
-            )
 
           Text(currentStyle.displayName)
             .font(.subheadline)
@@ -335,9 +329,27 @@ struct TextGenerationView: View {
       } placeholder: {
         Color(.systemGray5)
       }
+    } else if currentStyle.id == PromptStyle.noneID {
+      NoneStyleThumbnail()
     } else {
       Color(.systemGray5)
     }
+  }
+}
+
+// MARK: - None Style Thumbnail
+
+/// Placeholder shown for the "None" style, which has no thumbnail image by design.
+private struct NoneStyleThumbnail: View {
+  var body: some View {
+    // Opaque, and not systemGray5: the thumbnails draw no border, so the fill is the only
+    // thing that gives the tile an edge, and systemGray5 matches the chip behind it.
+    Color(.systemGray4)
+      .overlay {
+        Image(systemName: "nosign")
+          .font(.subheadline.weight(.semibold))
+          .foregroundColor(.secondary)
+      }
   }
 }
 
@@ -385,6 +397,7 @@ struct AllStylesSheet: View {
             StyleThumbnailCard(
               title: style.displayName,
               imageURL: style.thumbnailURL?.absoluteString,
+              styleID: style.id,
               isSelected: selectedStyle?.id == style.id,
               action: {
                 onStyleSelected(style)
@@ -416,6 +429,7 @@ struct AllStylesSheet: View {
 struct StyleThumbnailCard: View {
   let title: String
   let imageURL: String?
+  let styleID: String
   let isSelected: Bool
   let action: () -> Void
 
@@ -459,6 +473,8 @@ struct StyleThumbnailCard: View {
       } placeholder: {
         thumbnailPlaceholder
       }
+    } else if styleID == PromptStyle.noneID {
+      NoneStyleThumbnail()
     } else {
       thumbnailPlaceholder
     }
